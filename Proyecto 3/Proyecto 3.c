@@ -43,36 +43,45 @@ int main()
         al_wait_for_event(queue, &event);
         al_set_mouse_cursor(display, al_cursor);
         al_register_event_source(queue, al_get_mouse_event_source());
-        
        if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
             {
            running = false;
             }
-       else if (event.type == ALLEGRO_EVENT_MOUSE_AXES)
+       if (event.type == ALLEGRO_EVENT_MOUSE_AXES)
        {
            int mouseX = event.mouse.x;
            int mouseY = event.mouse.y;
            if (mouseX > 330 && mouseX < 443 && mouseY > 200 && mouseY < 250)
            {
-
-               al_draw_text(font, al_map_rgb(255, 0, 0), 330, 200, 0, "Jugar");
                al_clear_to_color(al_map_rgb(255, 255, 255));
                al_draw_text(font, al_map_rgb(0, 0, 0), 220, 30, 0, "Adivina quien?");
+               al_draw_text(font, al_map_rgb(255, 0, 0), 330, 200, 0, "Jugar");
                al_draw_text(font, al_map_rgb(0, 0, 0), 330, 300, 0, "Salir");
-               al_draw_text(font, al_map_rgb(0, 0, 0), 330, 500, 0, "if");
-               if (mouseX > 330 && mouseX < 443 && mouseY > 200 && mouseY < 250&&event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
+               al_play_sample(sample, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
+               if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
                {
                    al_play_sample(sample, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
                }
                al_flip_display();
            }
+			else if (mouseX >= 330 && mouseX <= 443 && mouseY >= 280 && mouseY <= 330)
+			{
+				al_clear_to_color(al_map_rgb(255, 255, 255));
+			   al_draw_text(font, al_map_rgb(0, 0, 0), 220, 30, 0, "Adivina quien?");
+			   al_draw_text(font, al_map_rgb(0, 0, 0), 330, 200, 0, "Jugar");
+			   al_draw_text(font, al_map_rgb(255, 0, 0), 330, 300, 0, "Salir");
+			   if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
+			   {
+			   	al_play_sample(sample, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
+			   }
+			   al_flip_display();
+		   }
            else
            {
                al_clear_to_color(al_map_rgb(255, 255, 255));
                al_draw_text(font, al_map_rgb(0, 0, 0), 220, 30, 0, "Adivina quien?");
                al_draw_text(font, al_map_rgb(0, 0, 0), 330, 200, 0, "Jugar");
                al_draw_text(font, al_map_rgb(0, 0, 0), 330, 300, 0, "Salir");
-               al_draw_text(font, al_map_rgb(0, 0, 0), 330, 400, 0, "else");
                al_flip_display();
            }
        }
