@@ -25,12 +25,14 @@ int main()
 	ALLEGRO_MOUSE_CURSOR* al_cursor = al_create_mouse_cursor(al_load_bitmap("magnifying-glass.png"), 0, 0); // crear un cursor
     ALLEGRO_SAMPLE* sample = NULL;
     ALLEGRO_SAMPLE_INSTANCE* sample_instance = NULL;
-    
+    ALLEGRO_BITMAP* bitmap = al_load_bitmap("wallpaperbitmap.jpeg");
+
     al_show_mouse_cursor(display); // mostrar el cursor
     al_register_event_source(queue, al_get_keyboard_event_source()); // registrar el teclado
     al_register_event_source(queue, al_get_display_event_source(display)); // registrar la pantalla, osea si das click en la x se cierra
     al_register_event_source(queue, al_get_timer_event_source(timer)); // registrar el timer
     al_reserve_samples(1);
+    al_set_target_bitmap(al_get_backbuffer(display));
     sample = al_load_sample("boton.mp3");
     bool running = true;
 
@@ -43,51 +45,52 @@ int main()
         al_wait_for_event(queue, &event);
         al_set_mouse_cursor(display, al_cursor);
         al_register_event_source(queue, al_get_mouse_event_source());
-       if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
-            {
-           running = false;
-            }
+        int mouseX = event.mouse.x;
+        int mouseY = event.mouse.y;
+       if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE || event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX >= 330 && mouseX <= 443 && mouseY >= 280 && mouseY <= 330)
+       {
+       		running = false;
+       }
+       if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 330 && mouseX < 443 && mouseY > 200 && mouseY < 250)
+       {
+           al_play_sample(sample, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
+        //insertar funcion del juego
+       }
        if (event.type == ALLEGRO_EVENT_MOUSE_AXES)
        {
-           int mouseX = event.mouse.x;
-           int mouseY = event.mouse.y;
+
            if (mouseX > 330 && mouseX < 443 && mouseY > 200 && mouseY < 250)
            {
-               al_clear_to_color(al_map_rgb(255, 255, 255));
+               al_draw_bitmap(bitmap, 0, 0, 0);
                al_draw_text(font, al_map_rgb(0, 0, 0), 220, 30, 0, "Adivina quien?");
                al_draw_text(font, al_map_rgb(255, 0, 0), 330, 200, 0, "Jugar");
                al_draw_text(font, al_map_rgb(0, 0, 0), 330, 300, 0, "Salir");
-               al_play_sample(sample, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
-               if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
+               al_flip_display();
+           }
+           else if (mouseX >= 330 && mouseX <= 443 && mouseY >= 280 && mouseY <= 330)
+           {
+               al_draw_bitmap(bitmap, 0, 0, 0);
+               al_draw_text(font, al_map_rgb(0, 0, 0), 220, 30, 0, "Adivina quien?");
+               al_draw_text(font, al_map_rgb(0, 0, 0), 330, 200, 0, "Jugar");
+               al_draw_text(font, al_map_rgb(255, 0, 0), 330, 300, 0, "Salir");
+               if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && event.mouse.button == 1)
                {
                    al_play_sample(sample, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
                }
                al_flip_display();
            }
-			else if (mouseX >= 330 && mouseX <= 443 && mouseY >= 280 && mouseY <= 330)
-			{
-				al_clear_to_color(al_map_rgb(255, 255, 255));
-			   al_draw_text(font, al_map_rgb(0, 0, 0), 220, 30, 0, "Adivina quien?");
-			   al_draw_text(font, al_map_rgb(0, 0, 0), 330, 200, 0, "Jugar");
-			   al_draw_text(font, al_map_rgb(255, 0, 0), 330, 300, 0, "Salir");
-			   if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
-			   {
-			   	al_play_sample(sample, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
-			   }
-			   al_flip_display();
-		   }
            else
            {
-               al_clear_to_color(al_map_rgb(255, 255, 255));
+           	al_draw_bitmap(bitmap,0,0,0);
                al_draw_text(font, al_map_rgb(0, 0, 0), 220, 30, 0, "Adivina quien?");
                al_draw_text(font, al_map_rgb(0, 0, 0), 330, 200, 0, "Jugar");
                al_draw_text(font, al_map_rgb(0, 0, 0), 330, 300, 0, "Salir");
                al_flip_display();
            }
        }
-       
-
     }
+
+
     al_destroy_display(display); //liberar memoria, destruir objetos
     al_destroy_font(font);
     al_destroy_event_queue(queue);
@@ -96,6 +99,10 @@ int main()
     al_uninstall_keyboard();
     al_uninstall_mouse();
     al_shutdown_image_addon();
+    al_shutdown_ttf_addon();
+    al_shutdown_font_addon();
+    al_uninstall_audio();
+    al_destroy_bitmap(bitmap);
 	return 0;
 
     
