@@ -17,27 +17,37 @@ int main()
     al_init_image_addon();
     al_init_acodec_addon();
     al_install_audio();
-    al_reserve_samples(1);
+    al_reserve_samples(2);
     ALLEGRO_DISPLAY * display = al_create_display(800, 600); // crear una pantalla de 800x600
     ALLEGRO_EVENT_QUEUE * queue = al_create_event_queue();  // crear una cola de eventos
     ALLEGRO_TIMER* timer = al_create_timer(1.0 / 60); // actualizar la pantalla a 60 fpS
     ALLEGRO_FONT* font = al_load_ttf_font("GROBOLD.ttf", 40, 0); // cargar una fuente
 	ALLEGRO_MOUSE_CURSOR* al_cursor = al_create_mouse_cursor(al_load_bitmap("magnifying-glass.png"), 0, 0); // crear un cursor
-    ALLEGRO_SAMPLE* sample = NULL;
-    ALLEGRO_SAMPLE_INSTANCE* sample_instance = NULL;
+    ALLEGRO_SAMPLE* click = NULL;
+    ALLEGRO_SAMPLE* fondo = NULL;
+    ALLEGRO_SAMPLE_INSTANCE* click_instance = NULL;
+    ALLEGRO_SAMPLE_INSTANCE* fondo_instance = NULL;
     ALLEGRO_BITMAP* bitmap = al_load_bitmap("wallpaperbitmap.jpeg");
+    
 
     al_show_mouse_cursor(display); // mostrar el cursor
     al_register_event_source(queue, al_get_keyboard_event_source()); // registrar el teclado
     al_register_event_source(queue, al_get_display_event_source(display)); // registrar la pantalla, osea si das click en la x se cierra
     al_register_event_source(queue, al_get_timer_event_source(timer)); // registrar el timer
-    al_reserve_samples(1);
-    al_set_target_bitmap(al_get_backbuffer(display));
-    sample = al_load_sample("boton.mp3");
-    bool running = true;
 
-    
+    al_set_target_bitmap(al_get_backbuffer(display));
+    click = al_load_sample("boton.wav");
+    fondo = al_load_sample("fondo.wav");
+    click_instance = al_create_sample_instance(click);
+    fondo_instance = al_create_sample_instance(fondo);
+    al_attach_sample_instance_to_mixer(click_instance, al_get_default_mixer());
+    al_attach_sample_instance_to_mixer(fondo_instance, al_get_default_mixer());
+    al_set_sample_instance_gain(fondo_instance, 0.11);
+    al_set_sample_instance_playmode(fondo_instance, ALLEGRO_PLAYMODE_LOOP);
+
+	bool running = true;
     al_start_timer(timer);
+    
 
 	while (running)
     {
@@ -47,13 +57,14 @@ int main()
         al_register_event_source(queue, al_get_mouse_event_source());
         int mouseX = event.mouse.x;
         int mouseY = event.mouse.y;
+        al_play_sample_instance(fondo_instance);
        if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE || event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX >= 330 && mouseX <= 443 && mouseY >= 280 && mouseY <= 330)
        {
        		running = false;
        }
        if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 330 && mouseX < 443 && mouseY > 200 && mouseY < 250)
        {
-           al_play_sample(sample, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
+           al_play_sample_instance(click_instance);
         //insertar funcion del juego
        }
        if (event.type == ALLEGRO_EVENT_MOUSE_AXES)
@@ -73,10 +84,6 @@ int main()
                al_draw_text(font, al_map_rgb(0, 0, 0), 220, 30, 0, "Adivina quien?");
                al_draw_text(font, al_map_rgb(0, 0, 0), 330, 200, 0, "Jugar");
                al_draw_text(font, al_map_rgb(255, 0, 0), 330, 300, 0, "Salir");
-               if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && event.mouse.button == 1)
-               {
-                   al_play_sample(sample, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
-               }
                al_flip_display();
            }
            else
@@ -100,9 +107,14 @@ int main()
     al_uninstall_mouse();
     al_shutdown_image_addon();
     al_shutdown_ttf_addon();
+    al_destroy_sample(fondo);
+    al_destroy_sample_instance(fondo_instance);
+    al_destroy_sample(click);
+    al_destroy_sample_instance(click_instance);
     al_shutdown_font_addon();
     al_uninstall_audio();
     al_destroy_bitmap(bitmap);
+    
 	return 0;
 
     
