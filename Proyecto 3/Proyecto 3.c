@@ -64,7 +64,8 @@ int main()
         al_play_sample_instance(fondo_instance);
        if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE || event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX >= 330 && mouseX <= 443 && mouseY >= 280 && mouseY <= 330)
        {
-       		al_destroy_display(display);
+           running = false;
+		
        }
        if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 330 && mouseX < 443 && mouseY > 200 && mouseY < 250)
        {
