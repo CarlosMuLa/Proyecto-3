@@ -4,6 +4,8 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
+#include <allegro5/allegro_primitives.h>
+#include "jugar.h"
 
 
 
@@ -14,10 +16,12 @@ int main()
     al_init_ttf_addon(); // inicializar los addons de texto
     al_install_keyboard(); // instalar el teclado
     al_install_mouse(); // instalar el mouse
+    al_init_primitives_addon();
     al_init_image_addon();
     al_init_acodec_addon();
     al_install_audio();
     al_reserve_samples(2);
+    al_init_primitives_addon();
     ALLEGRO_DISPLAY * display = al_create_display(800, 600); // crear una pantalla de 800x600
     ALLEGRO_EVENT_QUEUE * queue = al_create_event_queue();  // crear una cola de eventos
     ALLEGRO_TIMER* timer = al_create_timer(1.0 / 60); // actualizar la pantalla a 60 fpS
@@ -60,11 +64,13 @@ int main()
         al_play_sample_instance(fondo_instance);
        if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE || event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX >= 330 && mouseX <= 443 && mouseY >= 280 && mouseY <= 330)
        {
-       		running = false;
+       		al_destroy_display(display);
        }
        if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 330 && mouseX < 443 && mouseY > 200 && mouseY < 250)
        {
            al_play_sample_instance(click_instance);
+			play(display,queue,timer,font,al_cursor,bitmap,click_instance);
+
         //insertar funcion del juego
        }
        if (event.type == ALLEGRO_EVENT_MOUSE_AXES)
