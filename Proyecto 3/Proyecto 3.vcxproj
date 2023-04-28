@@ -137,6 +137,7 @@
   <ItemGroup>
     <ClCompile Include="play.c" />
     <ClCompile Include="Proyecto 3.c" />
+    <ClCompile Include="Tablero.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

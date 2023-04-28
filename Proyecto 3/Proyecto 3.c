@@ -70,7 +70,7 @@ int main()
        if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 330 && mouseX < 443 && mouseY > 200 && mouseY < 250)
        {
            al_play_sample_instance(click_instance);
-			play(display,queue,timer,font,al_cursor,bitmap,click_instance);
+			play(display,queue,timer,font,al_cursor,bitmap,click_instance,running);
 
         //insertar funcion del juego
        }
