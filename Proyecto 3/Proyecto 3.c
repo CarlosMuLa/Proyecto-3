@@ -32,6 +32,8 @@ int main()
     ALLEGRO_SAMPLE_INSTANCE* click_instance = NULL;
     ALLEGRO_SAMPLE_INSTANCE* fondo_instance = NULL;
     ALLEGRO_BITMAP* bitmap = al_load_bitmap("wallpaperbitmap.jpeg");
+
+    
     
 
     al_show_mouse_cursor(display); // mostrar el cursor

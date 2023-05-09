@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Personajes.h" />
     <ClCompile Include="play.c" />
     <ClCompile Include="Proyecto 3.c" />
     <ClCompile Include="Tablero.c" />
