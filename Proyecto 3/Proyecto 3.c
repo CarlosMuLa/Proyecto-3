@@ -22,7 +22,12 @@ int main()
     al_install_audio();
     al_reserve_samples(2);
     al_init_primitives_addon();
-    ALLEGRO_DISPLAY * display = al_create_display(800, 600); // crear una pantalla de 800x600
+    
+    ALLEGRO_DISPLAY* display = NULL; // crear una pantalla de 800x600
+
+    // Configurar las opciones de pantalla completa
+    al_set_new_display_flags(ALLEGRO_FULLSCREEN);
+    display = al_create_display(1920,1080);
     ALLEGRO_EVENT_QUEUE * queue = al_create_event_queue();  // crear una cola de eventos
     ALLEGRO_TIMER* timer = al_create_timer(1.0 / 60); // actualizar la pantalla a 60 fpS
     ALLEGRO_FONT* font = al_load_ttf_font("GROBOLD.ttf", 40, 0); // cargar una fuente
@@ -32,8 +37,10 @@ int main()
     ALLEGRO_SAMPLE_INSTANCE* click_instance = NULL;
     ALLEGRO_SAMPLE_INSTANCE* fondo_instance = NULL;
     ALLEGRO_BITMAP* bitmap = al_load_bitmap("wallpaperbitmap.jpeg");
+    
 
     
+
     
 
     al_show_mouse_cursor(display); // mostrar el cursor
@@ -64,12 +71,12 @@ int main()
         int mouseX = event.mouse.x;
         int mouseY = event.mouse.y;
         al_play_sample_instance(fondo_instance);
-       if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE || event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX >= 330 && mouseX <= 443 && mouseY >= 280 && mouseY <= 330)
+       if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE || event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX >= 840 && mouseX <= 950 && mouseY >= 695 && mouseY <= 745)
        {
            running = false;
 		
        }
-       if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 330 && mouseX < 443 && mouseY > 200 && mouseY < 250)
+       if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 850 && mouseX < 960 && mouseY > 400 && mouseY < 450)
        {
            al_play_sample_instance(click_instance);
 			play(display,queue,timer,font,al_cursor,bitmap,click_instance,running);
@@ -79,28 +86,28 @@ int main()
        if (event.type == ALLEGRO_EVENT_MOUSE_AXES)
        {
 
-           if (mouseX > 330 && mouseX < 443 && mouseY > 200 && mouseY < 250)
+           if (mouseX > 850 && mouseX < 960 && mouseY > 400 && mouseY < 450)
            {
                al_draw_bitmap(bitmap, 0, 0, 0);
-               al_draw_text(font, al_map_rgb(0, 0, 0), 220, 30, 0, "Adivina quien?");
-               al_draw_text(font, al_map_rgb(255, 0, 0), 330, 200, 0, "Jugar");
-               al_draw_text(font, al_map_rgb(0, 0, 0), 330, 300, 0, "Salir");
+               al_draw_text(font, al_map_rgb(0, 0, 0), 750, 155, 0, "Adivina quien?");
+               al_draw_text(font, al_map_rgb(255, 0, 0), 850, 400, 0, "Jugar");
+               al_draw_text(font, al_map_rgb(0, 0, 0), 850, 700, 0, "Salir");
                al_flip_display();
            }
-           else if (mouseX >= 330 && mouseX <= 443 && mouseY >= 280 && mouseY <= 330)
+           else if (mouseX >= 840 && mouseX <= 950 && mouseY >= 695 && mouseY <= 745)
            {
                al_draw_bitmap(bitmap, 0, 0, 0);
-               al_draw_text(font, al_map_rgb(0, 0, 0), 220, 30, 0, "Adivina quien?");
-               al_draw_text(font, al_map_rgb(0, 0, 0), 330, 200, 0, "Jugar");
-               al_draw_text(font, al_map_rgb(255, 0, 0), 330, 300, 0, "Salir");
+               al_draw_text(font, al_map_rgb(0, 0, 0), 750, 155, 0, "Adivina quien?");
+               al_draw_text(font, al_map_rgb(0, 0, 0), 850, 400, 0, "Jugar");
+               al_draw_text(font, al_map_rgb(255, 0, 0), 850, 700, 0, "Salir");
                al_flip_display();
            }
            else
            {
            	al_draw_bitmap(bitmap,0,0,0);
-               al_draw_text(font, al_map_rgb(0, 0, 0), 220, 30, 0, "Adivina quien?");
-               al_draw_text(font, al_map_rgb(0, 0, 0), 330, 200, 0, "Jugar");
-               al_draw_text(font, al_map_rgb(0, 0, 0), 330, 300, 0, "Salir");
+            al_draw_text(font, al_map_rgb(0, 0, 0), 750, 155, 0, "Adivina quien?");
+            al_draw_text(font, al_map_rgb(0, 0, 0), 850, 400, 0, "Jugar");
+            al_draw_text(font, al_map_rgb(0, 0, 0), 850, 700, 0, "Salir");
                al_flip_display();
            }
        }
