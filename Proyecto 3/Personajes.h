@@ -21,9 +21,10 @@ typedef struct
 	short vello;   // 1 barba  2 parche(menton)  3 mostacho  4 nada
 	char piel;    //M moreno   G guero
 	char sexo;   //  H hombre   M mujer
-	ALLEGRO_BITMAP* foto1;
+	ALLEGRO_BITMAP* foto;
 
 }J2;
+
 
 J1 personaje_1_1 = { 1,4, 1, 4, 'G', 'M'};
 

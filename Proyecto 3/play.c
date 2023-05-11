@@ -36,6 +36,7 @@ play(ALLEGRO_DISPLAY*display, ALLEGRO_EVENT_QUEUE*queue, ALLEGRO_TIMER*timer,ALL
 		}
 		while (turno == 1)
 		{
+			J1 seleccion;
 			ALLEGRO_EVENT event;
 			al_wait_for_event(queue, &event);
 			al_register_event_source(queue, al_get_mouse_event_source());
@@ -47,6 +48,60 @@ play(ALLEGRO_DISPLAY*display, ALLEGRO_EVENT_QUEUE*queue, ALLEGRO_TIMER*timer,ALL
 				playing = false;
 				break;
 			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 205 && mouseX < 507 && mouseY > 170 && mouseY < 410)
+			{
+				al_play_sample_instance(click);
+				seleccion = personaje_1_1;
+				turno = 2;
+			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 205 && mouseX < 507 && mouseY > 457 && mouseY < 700)
+			{
+				al_play_sample_instance(click);
+				seleccion = personaje_2_1;
+				turno = 2;
+			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 205 && mouseX < 507 && mouseY > 745 && mouseY < 1000)
+			{
+				al_play_sample_instance(click);
+				seleccion = personaje_3_1;
+				turno = 2;
+			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 570 && mouseX < 870 && mouseY > 170 && mouseY < 410)
+			{
+				al_play_sample_instance(click);
+				seleccion = personaje_5_1;
+				turno = 2;
+			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 570 && mouseX < 870 && mouseY > 457 && mouseY < 700)
+			{
+				al_play_sample_instance(click);
+				seleccion = personaje_6_1;
+				turno = 2;
+			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 570 && mouseX < 870 && mouseY > 745 && mouseY < 1000)
+			{
+				al_play_sample_instance(click);
+				seleccion = personaje_7_1;
+				turno = 2;
+			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 920 && mouseX < 1230 && mouseY > 170 && mouseY < 410)
+			{
+				al_play_sample_instance(click);
+				seleccion = personaje_8_1;
+				turno = 2;
+			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 920 && mouseX < 1230 && mouseY > 457 && mouseY < 700)
+			{
+				al_play_sample_instance(click);
+				seleccion = personaje_9_1;
+				turno = 2;
+			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 920 && mouseX < 1230 && mouseY > 745 && mouseY < 1000)
+			{
+				al_play_sample_instance(click);
+				seleccion = personaje_10_1;
+				turno = 2;
+			}
 			if (event.type == ALLEGRO_EVENT_MOUSE_AXES)
 			{
 				if (mouseX > 17 && mouseX < 55 && mouseY>20 && mouseY < 50)
@@ -57,17 +112,17 @@ play(ALLEGRO_DISPLAY*display, ALLEGRO_EVENT_QUEUE*queue, ALLEGRO_TIMER*timer,ALL
 					al_draw_text(font, al_map_rgb(0, 0, 0), 86, 20, 0, "Jugador 1 selecciona tu personaje");
 					al_draw_filled_rectangle(121, 107, 1305, 1043, al_map_rgb(0, 0, 0));
 					al_draw_rectangle(205, 170, 507, 410, al_map_rgb(255, 255, 255), 15);
-					al_draw_bitmap(personaje_1_1.foto, 208, 180, 0);
+					al_draw_bitmap(personaje_1_1.foto, 208, 180, 0);//
 					al_draw_rectangle(205, 457, 507, 700, al_map_rgb(255, 255, 255), 15);
-					al_draw_bitmap(personaje_2_1.foto, 208, 467, 0);
+					al_draw_bitmap(personaje_2_1.foto, 208, 467, 0);//
 					al_draw_rectangle(205, 745, 507, 1000, al_map_rgb(255, 255, 255), 15);
-					al_draw_bitmap(personaje_3_1.foto, 208, 755, 0);
+					al_draw_bitmap(personaje_3_1.foto, 208, 755, 0);//
 					al_draw_rectangle(570, 170, 870, 410, al_map_rgb(255, 255, 255), 15);
-					al_draw_bitmap(personaje_5_1.foto, 573, 180, 0);
+					al_draw_bitmap(personaje_5_1.foto, 573, 180, 0);//
 					al_draw_rectangle(570, 457, 870, 700, al_map_rgb(255, 255, 255), 15);
-					al_draw_bitmap(personaje_6_1.foto, 573, 467, 0);
+					al_draw_bitmap(personaje_6_1.foto, 573, 467, 0);//
 					al_draw_rectangle(570, 745, 870, 1000, al_map_rgb(255, 255, 255), 15);
-					al_draw_bitmap(personaje_7_1.foto, 573, 755, 0);
+					al_draw_bitmap(personaje_7_1.foto, 573, 755, 0);//
 					al_draw_rectangle(920, 170, 1230, 410, al_map_rgb(255, 255, 255), 15);
 					al_draw_bitmap(personaje_8_1.foto, 923, 180, 0);
 					al_draw_rectangle(920, 457, 1230, 700, al_map_rgb(255, 255, 255), 15);
@@ -76,6 +131,52 @@ play(ALLEGRO_DISPLAY*display, ALLEGRO_EVENT_QUEUE*queue, ALLEGRO_TIMER*timer,ALL
 					al_draw_bitmap(personaje_10_1.foto, 923, 755, 0);
 					al_flip_display();
 				}
+				else if(mouseX > 205 && mouseX < 507 && mouseY > 170 && mouseY < 410)//1
+				{
+					al_draw_rectangle(205, 170, 507, 410, al_map_rgb(255, 0, 0), 15);
+					al_flip_display();
+				}
+				else if (mouseX > 205 && mouseX < 507 && mouseY > 457 && mouseY < 700)//2
+				{
+					al_draw_rectangle(205, 457, 507, 700, al_map_rgb(255, 0, 0), 15);
+					al_flip_display();
+				} 
+				else if (mouseX > 205 && mouseX < 507 && mouseY > 745 && mouseY < 1000)//3
+				{
+					al_draw_rectangle(205, 745, 507, 1000, al_map_rgb(255, 0, 0), 15);
+					al_flip_display();
+				}
+				else if (mouseX > 570 && mouseX < 870 && mouseY > 170 && mouseY < 410)//5
+				{
+					al_draw_rectangle(570, 170, 870, 410, al_map_rgb(255, 0, 0), 15);
+					al_flip_display();
+				}
+				else if (mouseX > 570 && mouseX < 870 && mouseY > 457 && mouseY < 700)//6
+				{
+					al_draw_rectangle(570, 457, 870, 700, al_map_rgb(255, 0, 0), 15);
+					al_flip_display();
+				}
+				else if (mouseX > 570 && mouseX < 870 && mouseY > 745 && mouseY < 1000)//7
+				{
+					al_draw_rectangle(570, 745, 870, 1000, al_map_rgb(255, 0, 0), 15);
+					al_flip_display();
+				}
+				else if (mouseX > 920 && mouseX < 1230 && mouseY > 170 && mouseY < 410)//8
+				{
+					al_draw_rectangle(920, 170, 1230, 410, al_map_rgb(255, 0, 0), 15);
+					al_flip_display();
+				}
+				else if (mouseX > 920 && mouseX < 1230 && mouseY > 457 && mouseY < 700)//9
+				{
+					al_draw_rectangle(920, 457, 1230, 700, al_map_rgb(255, 0, 0), 15);
+					al_flip_display();
+				}
+				else if (mouseX > 920 && mouseX < 1230 && mouseY > 745 && mouseY < 1000)//10
+				{
+					al_draw_rectangle(920, 745, 1230, 1000, al_map_rgb(255, 0, 0), 15);
+					al_flip_display();
+				}
+
 
 				else
 				{
@@ -97,6 +198,179 @@ play(ALLEGRO_DISPLAY*display, ALLEGRO_EVENT_QUEUE*queue, ALLEGRO_TIMER*timer,ALL
 					al_draw_rectangle(570, 745, 870, 1000, al_map_rgb(255, 255, 255), 15);
 					al_draw_bitmap(personaje_7_1.foto, 573, 755, 0);
 					al_draw_rectangle(920, 170,1230, 410, al_map_rgb(255, 255, 255), 15);
+					al_draw_bitmap(personaje_8_1.foto, 923, 180, 0);
+					al_draw_rectangle(920, 457, 1230, 700, al_map_rgb(255, 255, 255), 15);
+					al_draw_bitmap(personaje_9_1.foto, 923, 467, 0);
+					al_draw_rectangle(920, 745, 1230, 1000, al_map_rgb(255, 255, 255), 15);
+					al_draw_bitmap(personaje_10_1.foto, 923, 755, 0);
+					al_flip_display();
+				}
+			}
+		}
+		while (turno == 2)
+		{
+			J2 seleccion;
+			ALLEGRO_EVENT event;
+			al_wait_for_event(queue, &event);
+			al_register_event_source(queue, al_get_mouse_event_source());
+			int mouseX = event.mouse.x;
+			int mouseY = event.mouse.y;
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 17 && mouseX < 55 && mouseY>20 && mouseY < 50)
+			{
+				al_play_sample_instance(click);
+				playing = false;
+				break;
+			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 205 && mouseX < 507 && mouseY > 170 && mouseY < 410)
+			{
+				al_play_sample_instance(click);
+				seleccion = personaje_1_2;
+				turno = 1;
+			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 205 && mouseX < 507 && mouseY > 457 && mouseY < 700)
+			{
+				al_play_sample_instance(click);
+				seleccion = personaje_2_2;
+				turno = 1;
+			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 205 && mouseX < 507 && mouseY > 745 && mouseY < 1000)
+			{
+				al_play_sample_instance(click);
+				seleccion = personaje_3_2;
+				turno = 1;
+			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 570 && mouseX < 870 && mouseY > 170 && mouseY < 410)
+			{
+				al_play_sample_instance(click);
+				seleccion = personaje_5_2;
+				turno = 1;
+			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 570 && mouseX < 870 && mouseY > 457 && mouseY < 700)
+			{
+				al_play_sample_instance(click);
+				seleccion = personaje_6_2;
+				turno = 1;
+			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 570 && mouseX < 870 && mouseY > 745 && mouseY < 1000)
+			{
+				al_play_sample_instance(click);
+				seleccion = personaje_7_2;
+				turno = 1;
+			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 920 && mouseX < 1230 && mouseY > 170 && mouseY < 410)
+			{
+				al_play_sample_instance(click);
+				seleccion = personaje_8_2;
+				turno = 1;
+			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 920 && mouseX < 1230 && mouseY > 457 && mouseY < 700)
+			{
+				al_play_sample_instance(click);
+				seleccion = personaje_9_2;
+				turno = 1;
+			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && mouseX > 920 && mouseX < 1230 && mouseY > 745 && mouseY < 1000)
+			{
+				al_play_sample_instance(click);
+				seleccion = personaje_10_2;
+				turno = 1;
+			}
+			if (event.type == ALLEGRO_EVENT_MOUSE_AXES)
+			{
+				if (mouseX > 17 && mouseX < 55 && mouseY>20 && mouseY < 50)
+				{
+					al_draw_bitmap(fondo, 0, 0, 0);
+					al_draw_line(43, 43, 55, 43, al_map_rgb(0, 0, 0), 10);
+					al_draw_filled_triangle(17, 44, 42, 31, 42, 57, al_map_rgb(0, 0, 0));
+					al_draw_text(font, al_map_rgb(0, 0, 0), 86, 20, 0, "Jugador 2 selecciona tu personaje");
+					al_draw_filled_rectangle(121, 107, 1305, 1043, al_map_rgb(0, 0, 0));
+					al_draw_rectangle(205, 170, 507, 410, al_map_rgb(255, 255, 255), 15);
+					al_draw_bitmap(personaje_1_1.foto, 208, 180, 0);//
+					al_draw_rectangle(205, 457, 507, 700, al_map_rgb(255, 255, 255), 15);
+					al_draw_bitmap(personaje_2_1.foto, 208, 467, 0);//
+					al_draw_rectangle(205, 745, 507, 1000, al_map_rgb(255, 255, 255), 15);
+					al_draw_bitmap(personaje_3_1.foto, 208, 755, 0);//
+					al_draw_rectangle(570, 170, 870, 410, al_map_rgb(255, 255, 255), 15);
+					al_draw_bitmap(personaje_5_1.foto, 573, 180, 0);//
+					al_draw_rectangle(570, 457, 870, 700, al_map_rgb(255, 255, 255), 15);
+					al_draw_bitmap(personaje_6_1.foto, 573, 467, 0);//
+					al_draw_rectangle(570, 745, 870, 1000, al_map_rgb(255, 255, 255), 15);
+					al_draw_bitmap(personaje_7_1.foto, 573, 755, 0);//
+					al_draw_rectangle(920, 170, 1230, 410, al_map_rgb(255, 255, 255), 15);
+					al_draw_bitmap(personaje_8_1.foto, 923, 180, 0);
+					al_draw_rectangle(920, 457, 1230, 700, al_map_rgb(255, 255, 255), 15);
+					al_draw_bitmap(personaje_9_1.foto, 923, 467, 0);
+					al_draw_rectangle(920, 745, 1230, 1000, al_map_rgb(255, 255, 255), 15);
+					al_draw_bitmap(personaje_10_1.foto, 923, 755, 0);
+					al_flip_display();
+				}
+				else if (mouseX > 205 && mouseX < 507 && mouseY > 170 && mouseY < 410)//1
+				{
+					al_draw_rectangle(205, 170, 507, 410, al_map_rgb(255, 0, 0), 15);
+					al_flip_display();
+				}
+				else if (mouseX > 205 && mouseX < 507 && mouseY > 457 && mouseY < 700)//2
+				{
+					al_draw_rectangle(205, 457, 507, 700, al_map_rgb(255, 0, 0), 15);
+					al_flip_display();
+				}
+				else if (mouseX > 205 && mouseX < 507 && mouseY > 745 && mouseY < 1000)//3
+				{
+					al_draw_rectangle(205, 745, 507, 1000, al_map_rgb(255, 0, 0), 15);
+					al_flip_display();
+				}
+				else if (mouseX > 570 && mouseX < 870 && mouseY > 170 && mouseY < 410)//5
+				{
+					al_draw_rectangle(570, 170, 870, 410, al_map_rgb(255, 0, 0), 15);
+					al_flip_display();
+				}
+				else if (mouseX > 570 && mouseX < 870 && mouseY > 457 && mouseY < 700)//6
+				{
+					al_draw_rectangle(570, 457, 870, 700, al_map_rgb(255, 0, 0), 15);
+					al_flip_display();
+				}
+				else if (mouseX > 570 && mouseX < 870 && mouseY > 745 && mouseY < 1000)//7
+				{
+					al_draw_rectangle(570, 745, 870, 1000, al_map_rgb(255, 0, 0), 15);
+					al_flip_display();
+				}
+				else if (mouseX > 920 && mouseX < 1230 && mouseY > 170 && mouseY < 410)//8
+				{
+					al_draw_rectangle(920, 170, 1230, 410, al_map_rgb(255, 0, 0), 15);
+					al_flip_display();
+				}
+				else if (mouseX > 920 && mouseX < 1230 && mouseY > 457 && mouseY < 700)//9
+				{
+					al_draw_rectangle(920, 457, 1230, 700, al_map_rgb(255, 0, 0), 15);
+					al_flip_display();
+				}
+				else if (mouseX > 920 && mouseX < 1230 && mouseY > 745 && mouseY < 1000)//10
+				{
+					al_draw_rectangle(920, 745, 1230, 1000, al_map_rgb(255, 0, 0), 15);
+					al_flip_display();
+				}
+
+
+				else
+				{
+					al_draw_bitmap(fondo, 0, 0, 0);
+					al_draw_line(43, 43, 55, 43, al_map_rgb(93, 153, 83), 10);
+					al_draw_filled_triangle(17, 44, 42, 31, 42, 57, al_map_rgb(93, 153, 83));
+					al_draw_text(font, al_map_rgb(0, 0, 0), 86, 20, 0, "Jugador 2 selecciona tu personaje");
+					al_draw_filled_rectangle(121, 107, 1305, 1043, al_map_rgb(0, 0, 0));
+					al_draw_rectangle(205, 170, 507, 410, al_map_rgb(255, 255, 255), 15);
+					al_draw_bitmap(personaje_1_1.foto, 208, 180, 0);
+					al_draw_rectangle(205, 457, 507, 700, al_map_rgb(255, 255, 255), 15);
+					al_draw_bitmap(personaje_2_1.foto, 208, 467, 0);
+					al_draw_rectangle(205, 745, 507, 1000, al_map_rgb(255, 255, 255), 15);
+					al_draw_bitmap(personaje_3_1.foto, 208, 755, 0);
+					al_draw_rectangle(570, 170, 870, 410, al_map_rgb(255, 255, 255), 15);
+					al_draw_bitmap(personaje_5_1.foto, 573, 180, 0);
+					al_draw_rectangle(570, 457, 870, 700, al_map_rgb(255, 255, 255), 15);
+					al_draw_bitmap(personaje_6_1.foto, 573, 467, 0);
+					al_draw_rectangle(570, 745, 870, 1000, al_map_rgb(255, 255, 255), 15);
+					al_draw_bitmap(personaje_7_1.foto, 573, 755, 0);
+					al_draw_rectangle(920, 170, 1230, 410, al_map_rgb(255, 255, 255), 15);
 					al_draw_bitmap(personaje_8_1.foto, 923, 180, 0);
 					al_draw_rectangle(920, 457, 1230, 700, al_map_rgb(255, 255, 255), 15);
 					al_draw_bitmap(personaje_9_1.foto, 923, 467, 0);
