@@ -6,11 +6,13 @@
 #include <allegro5/allegro_acodec.h>
 #include <allegro5/allegro_primitives.h>
 #include "jugar.h"
+#include <stdio.h>
 
 
 
 int main()
 {
+    printf("Hello world!\n");
     al_init(); // inicializar la libreria allegro
     al_init_font_addon(); // inicializar los addons de fuentes
     al_init_ttf_addon(); // inicializar los addons de texto

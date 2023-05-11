@@ -26,38 +26,38 @@ typedef struct
 }J2;
 
 
-J1 personaje_1_1 = { 1,4, 1, 4, 'G', 'M'};
+J1 personaje_1_1 = { 1,4, 1, 4, 'g', 'h'};
 
-J1 personaje_2_1 = { 5, 1,2, 4, 'M', 'M'};
+J1 personaje_2_1 = { 5, 1,2, 4, 'm', 'h'};
 
-J1 personaje_3_1 = { 4,0, 1, 4, 'G', 'M'};
+J1 personaje_3_1 = { 4,0, 1, 4, 'g', 'h'};
 
-J1 personaje_5_1 = { 5,0, 3, 4, 'G', 'M'};
+J1 personaje_5_1 = { 5,0, 3, 4, 'g', 'h'};
 
-J1 personaje_6_1 = { 2,1, 2, 4, 'G', 'H'};
+J1 personaje_6_1 = { 2,1, 2, 4, 'g', 'h'};
 
-J1 personaje_7_1 = { 3, 0,2, 1, 'G', 'H'};
+J1 personaje_7_1 = { 3, 0,2, 1, 'g', 'h'};
 
-J1 personaje_8_1 = { 3,0, 4, 2, 'M', 'H'};
+J1 personaje_8_1 = { 3,0, 4, 2, 'm', 'h'};
 
-J1 personaje_9_1 = { 1,3, 2, 3, 'G', 'H'};
+J1 personaje_9_1 = { 1,3, 2, 3, 'g', 'h'};
 
-J1 personaje_10_1 = { 2,0,1,4,'G','H' };
+J1 personaje_10_1 = { 2,0,1,4,'g','h' };
 
-J2 personaje_1_2 = { 1,4, 1, 4, 'G', 'M'};
+J2 personaje_1_2 = { 1,4, 1, 4, 'g', 'h'};
 
-J2 personaje_2_2 = { 5, 1,2, 4, 'M', 'M'};
+J2 personaje_2_2 = { 5, 1,2, 4, 'm', 'h'};
 
-J2 personaje_3_2 = { 4,0, 1, 4, 'G', 'M'};
+J2 personaje_3_2 = { 4,0, 1, 4, 'g', 'h'};
 
-J2 personaje_5_2 = { 5,0, 3, 4, 'G', 'M'};
+J2 personaje_5_2 = { 5,0, 3, 4, 'g', 'h'};
 
-J2 personaje_6_2 = { 2,1, 2, 4, 'G', 'H'};
+J2 personaje_6_2 = { 2,1, 2, 4, 'g', 'h'};
 
-J2 personaje_7_2 = { 3, 0,2, 1, 'G', 'H'};
+J2 personaje_7_2 = { 3, 0,2, 1, 'g', 'h'};
 
-J2 personaje_8_2 = { 3,0, 4, 2, 'M', 'H'};
+J2 personaje_8_2 = { 3,0, 4, 2, 'm', 'h'};
 
-J2 personaje_9_2 = { 1,3, 2, 3, 'G', 'H'};
+J2 personaje_9_2 = { 1,3, 2, 3, 'g', 'h'};
 
-J2 personaje_10_2 = { 2,0,1,4,'G','H' };
+J2 personaje_10_2 = { 2,0,1,4,'g','h' };
